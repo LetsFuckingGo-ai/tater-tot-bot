@@ -322,8 +322,7 @@ async function loadSettings() {
   f.whatsapp.value = s.whatsapp || '';
   f.instagram.value = s.instagram || '';
   f.heroImage.value = s.heroImage || '';
-  setPreview($('#heroPrev'), s.heroImage);
-  if (!s.heroImage) $('#heroPrev').textContent = '';
+  setPreview($('#heroPrev'), s.heroImage || '/img/arena.jpg');
   const st = $('#botStatus');
   st.className = 'status ' + (s.botEnabled ? 'on' : 'off');
   st.textContent = s.botEnabled

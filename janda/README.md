@@ -27,6 +27,7 @@ npm test
 3. Put the site link in the Instagram bio.
 
 ## Notes
-- The sample products and the "Nuestra historia" text are placeholders written from the Instagram profile. Edit them to match the real pieces and story.
+- Product photos in `public/img/` were cropped from Instagram screenshots, so they are small (about 390 px wide). Upload the original photos in `/admin → Productos` to make them sharp.
+- Product names, descriptions, prices and stock are placeholders based on the Instagram grid. Alba should set the real ones in `/admin → Productos`. The "Nuestra historia" text is a draft for her to edit.
 - Spam protection: honeypot field and per-IP rate limits on public forms.
 - Admin sessions last 30 days and are kept in memory, so a restart logs Alba out.
