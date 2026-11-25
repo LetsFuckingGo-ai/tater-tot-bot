@@ -17,6 +17,8 @@ const eslintConfig = defineConfig([
     // Release output (the built app) and the downloaded relay agent (scripts/release.sh).
     "dist-desktop/**",
     "vendor/**",
+    // Janda storefront: standalone plain-JS project with its own tests.
+    "janda/**",
   ]),
 ]);
 

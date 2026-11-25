@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Janda CRM</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/admin.css">
+</head>
+<body>
+  <section class="login" id="login" hidden>
+    <form id="loginForm">
+      <span class="logo">Janda</span>
+      <p>Panel de la tienda</p>
+      <label>Contraseña<input type="password" name="password" autocomplete="current-password" required autofocus></label>
+      <button class="btn">Entrar</button>
+      <p class="err" id="loginErr" role="alert"></p>
+    </form>
+  </section>
+
+  <div class="app" id="app" hidden>
+    <aside class="side">
+      <span class="logo">Janda</span>
+      <nav id="tabs">
+        <button data-tab="resumen" aria-current="page">Resumen</button>
+        <button data-tab="solicitudes">Solicitudes <span class="pill" id="openCount"></span></button>
+        <button data-tab="contactos">Contactos</button>
+        <button data-tab="productos">Productos</button>
+        <button data-tab="campanas">Campañas</button>
+        <button data-tab="ajustes">Ajustes y bot</button>
+      </nav>
+      <div class="side-foot">
+        <a href="/" target="_blank">Ver tienda ↗</a>
+        <button id="logout">Salir</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <!-- Resumen -->
+      <section data-panel="resumen">
+        <header class="ph"><h1>Hola, Alba</h1><p id="today"></p></header>
+        <div class="kpis" id="kpis"></div>
+        <div class="split">
+          <div class="card"><h2>Últimas solicitudes</h2><ul class="feed" id="recentInq"></ul></div>
+          <div class="card"><h2>Por tipo</h2><ul class="bars" id="byType"></ul></div>
+        </div>
+      </section>
+
+      <!-- Solicitudes -->
+      <section data-panel="solicitudes" hidden>
+        <header class="ph"><h1>Solicitudes</h1><p>Pedidos, rentas, mayoreo y mensajes que llegan desde la web.</p></header>
+        <div class="board" id="board"></div>
+      </section>
+
+      <!-- Contactos -->
+      <section data-panel="contactos" hidden>
+        <header class="ph row">
+          <div><h1>Contactos</h1><p id="contactTotal"></p></div>
+          <div class="tools">
+            <input type="search" id="cq" placeholder="Buscar nombre, correo, etiqueta…">
+            <select id="cstage"><option value="">Todas las etapas</option></select>
+            <button class="btn ghost" id="newContact">+ Nuevo</button>
+            <a class="btn ghost" id="csv" href="/api/admin/contacts?format=csv">Exportar CSV</a>
+          </div>
+        </header>
+        <div class="table-wrap"><table class="table" id="contactTable">
+          <thead><tr><th>Nombre</th><th>Contacto</th><th>Etapa</th><th>Etiquetas</th><th>Novedades</th><th>Última actividad</th></tr></thead>
+          <tbody></tbody>
+        </table></div>
+      </section>
+
+      <!-- Productos -->
+      <section data-panel="productos" hidden>
+        <header class="ph row">
+          <div><h1>Productos</h1><p>Sube las fotos de Instagram aquí. Los cambios salen en la tienda al instante.</p></div>
+          <button class="btn" id="newProduct">+ Nueva prenda</button>
+        </header>
+        <div class="prod-grid" id="prodGrid"></div>
+      </section>
+
+      <!-- Campañas -->
+      <section data-panel="campanas" hidden>
+        <header class="ph row">
+          <div><h1>Campañas</h1><p>Tu bot de marketing deja aquí sus borradores. Nada sale sin tu aprobación.</p></div>
+          <button class="btn" id="newCampaign">+ Nueva campaña</button>
+        </header>
+        <div class="camps" id="camps"></div>
+      </section>
+
+      <!-- Ajustes -->
+      <section data-panel="ajustes" hidden>
+        <header class="ph"><h1>Ajustes y bot</h1></header>
+        <div class="split">
+          <form class="card stack" id="settingsForm">
+            <h2>Tienda</h2>
+            <label>WhatsApp (con código de país, solo números)<input name="whatsapp" placeholder="573001234567"></label>
+            <label>Instagram<input name="instagram" placeholder="janda.clothing"></label>
+            <label>Foto principal (portada)
+              <div class="hero-pick"><div class="hero-prev" id="heroPrev"></div><input type="file" accept="image/*" id="heroFile"></div>
+            </label>
+            <input type="hidden" name="heroImage">
+            <button class="btn">Guardar</button>
+            <p class="ok" id="settingsMsg" role="status"></p>
+          </form>
+          <div class="card stack">
+            <h2>Bot de marketing</h2>
+            <p class="status" id="botStatus"></p>
+            <p>Conecta cualquier bot (Claude, n8n, Zapier, Make) con la API. El bot puede leer contactos con permiso de marketing, registrar mensajes enviados y proponer campañas que tú apruebas.</p>
+            <pre class="code"><code>GET  /api/bot/contacts?consent=true&amp;tag=renta
+POST /api/bot/contacts/:id/activities
+POST /api/bot/campaigns
+GET  /api/bot/campaigns/:id/audience
+Authorization: Bearer &lt;BOT_API_KEY&gt;</code></pre>
+            <p class="small">Guía completa en <a href="/BOT.md" target="_blank">BOT.md</a>.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Contact drawer -->
+  <aside class="drawer" id="contactDrawer" hidden>
+    <div class="scrim" data-close></div>
+    <div class="panel" id="contactPanel"></div>
+  </aside>
+
+  <!-- Product editor -->
+  <dialog class="modal" id="productModal">
+    <form class="stack" id="productForm">
+      <h2 id="pmTitle">Prenda</h2>
+      <div class="pm-grid">
+        <div class="pm-img">
+          <div class="pm-prev" id="pmPrev"></div>
+          <input type="file" accept="image/*" id="pmFile">
+          <input type="hidden" name="image">
+        </div>
+        <div class="stack">
+          <label>Nombre<input name="name" required></label>
+          <div class="two">
+            <label>Categoría<input name="category" list="cats"></label>
+            <label>Etiqueta (opcional)<input name="badge" placeholder="Nuevo, Bordado a mano…"></label>
+          </div>
+          <div class="three">
+            <label>Precio (COP)<input name="price" type="number" min="0" step="1000"></label>
+            <label>Renta (COP)<input name="rentPrice" type="number" min="0" step="1000"></label>
+            <label>Unidades<input name="stock" type="number" min="0"></label>
+          </div>
+          <label>Descripción<textarea name="description" rows="3"></textarea></label>
+          <div class="two">
+            <label>Tallas (separadas por coma)<input name="sizes" placeholder="XS, S, M, L"></label>
+            <label>Colores<input name="colors" placeholder="Coral, Negro"></label>
+          </div>
+          <fieldset class="modes"><legend>Disponible para</legend>
+            <label><input type="checkbox" name="m_venta"> Venta</label>
+            <label><input type="checkbox" name="m_renta"> Renta</label>
+            <label><input type="checkbox" name="m_mayoreo"> Mayoreo</label>
+            <label><input type="checkbox" name="published"> Visible en la tienda</label>
+          </fieldset>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn danger ghost" id="pmDelete">Eliminar</button>
+        <span></span>
+        <button type="button" class="btn ghost" data-close>Cancelar</button>
+        <button class="btn">Guardar</button>
+      </div>
+    </form>
+  </dialog>
+  <datalist id="cats"><option>Bikinis</option><option>Enterizos</option><option>Salidas de playa</option><option>Vestidos</option><option>Accesorios</option></datalist>
+
+  <!-- Campaign editor -->
+  <dialog class="modal narrow" id="campModal">
+    <form class="stack" id="campForm">
+      <h2>Campaña</h2>
+      <label>Nombre<input name="name" required></label>
+      <div class="two">
+        <label>Canal<select name="channel"><option value="email">Correo</option><option value="whatsapp">WhatsApp</option><option value="instagram">Instagram</option></select></label>
+        <label>Audiencia (etiqueta)<input name="tag" placeholder="newsletter, renta, mayoreo…"></label>
+      </div>
+      <label>Asunto<input name="subject"></label>
+      <label>Mensaje<textarea name="body" rows="7"></textarea></label>
+      <div class="modal-actions"><span></span><button type="button" class="btn ghost" data-close>Cancelar</button><button class="btn">Guardar borrador</button></div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="/admin.js" defer></script>
+</body>
+</html>

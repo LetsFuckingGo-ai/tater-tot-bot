@@ -1,0 +1,12 @@
+{
+  "name": "janda",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Janda Clothing: storefront, CRM and marketing-bot API. No dependencies.",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "ADMIN_PASSWORD=janda BOT_API_KEY=dev-bot-key node --watch server.js",
+    "test": "node --test test/*.test.js"
+  },
+  "engines": { "node": ">=20" }
+}

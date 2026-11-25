@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Janda — Ropa de playa hecha en Colombia</title>
+  <meta name="description" content="Janda: bikinis, enterizos, salidas de playa y accesorios únicos, hechos en Colombia. Venta, renta y mayoreo.">
+  <meta property="og:title" content="Janda — Vive el paraíso en cada prenda">
+  <meta property="og:description" content="Ropa y accesorios únicos hechos en Colombia. Venta · Renta · Mayoreo.">
+  <meta name="theme-color" content="#F4EEE6">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <a class="skip" href="#coleccion">Ir a la colección</a>
+
+  <header class="nav" id="nav">
+    <nav class="nav-links" aria-label="Principal">
+      <a href="#coleccion">Colección</a>
+      <a href="#formas">Renta</a>
+      <a href="#formas">Mayoreo</a>
+      <a href="#historia">Historia</a>
+    </nav>
+    <a class="wordmark" href="#top" aria-label="Janda, inicio">Janda</a>
+    <div class="nav-actions">
+      <a class="ig-link" data-ig href="https://instagram.com/janda.clothing" target="_blank" rel="noopener">Instagram</a>
+      <button class="bag-btn" id="bagBtn" aria-label="Abrir bolsa">Bolsa <span class="bag-count" id="bagCount">0</span></button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow reveal">Ropa de playa · Hecha en Colombia</p>
+        <h1 class="reveal">Vive el <em>paraíso</em><br>en cada prenda.</h1>
+        <p class="lede reveal">Bikinis, enterizos y accesorios únicos, cortados y cosidos en Colombia en tiradas pequeñas. Para el mar, la isla y la noche que sigue.</p>
+        <div class="hero-cta reveal">
+          <a class="btn btn-dark" href="#coleccion">Ver la colección</a>
+          <a class="btn-link" href="#formas">Venta · Renta · Mayoreo</a>
+        </div>
+      </div>
+      <figure class="hero-art reveal" id="heroArt" aria-hidden="true">
+        <div class="arch arch-hero">
+          <div class="sunset"><span class="sun"></span><span class="sea"></span></div>
+        </div>
+        <figcaption class="hero-tag"><span>Colección</span><strong>Caribe ’26</strong></figcaption>
+        <svg class="palm" viewBox="0 0 120 200" aria-hidden="true"><path d="M60 200 C62 150 58 110 66 70" fill="none" stroke="currentColor" stroke-width="2"/><path d="M66 70 C40 50 18 56 4 72 M66 70 C48 40 26 30 10 34 M66 70 C70 38 62 16 46 4 M66 70 C88 42 108 40 118 50 M66 70 C92 62 110 74 116 92" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </figure>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Venta</span><i>✦</i><span>Renta</span><i>✦</i><span>Mayoreo</span><i>✦</i><span>Hecho en Colombia</span><i>✦</i><span>Envíos a todo el país</span><i>✦</i>
+        <span>Venta</span><i>✦</i><span>Renta</span><i>✦</i><span>Mayoreo</span><i>✦</i><span>Hecho en Colombia</span><i>✦</i><span>Envíos a todo el país</span><i>✦</i>
+      </div>
+    </div>
+
+    <section class="collection" id="coleccion">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">La colección</p>
+          <h2>Piezas para <em>quedarse</em></h2>
+        </div>
+        <div class="filters" id="filters" role="tablist" aria-label="Filtrar por categoría"></div>
+      </div>
+      <div class="grid" id="grid" aria-live="polite"></div>
+    </section>
+
+    <section class="formas" id="formas">
+      <p class="eyebrow center">Tres formas de vestir Janda</p>
+      <div class="formas-grid">
+        <article class="forma reveal">
+          <span class="numeral">I</span>
+          <h3>Venta</h3>
+          <p>Elige tu talla, arma tu bolsa y confirmamos tu pedido por WhatsApp. Envíos a toda Colombia.</p>
+          <a class="btn-link" href="#coleccion">Comprar ahora</a>
+        </article>
+        <article class="forma reveal">
+          <span class="numeral">II</span>
+          <h3>Renta</h3>
+          <p>¿Boda en la playa, sesión de fotos o viaje especial? Renta piezas de ocasión por días, lavadas y listas.</p>
+          <button class="btn-link" data-inquiry="renta">Reservar una renta</button>
+        </article>
+        <article class="forma reveal">
+          <span class="numeral">III</span>
+          <h3>Mayoreo</h3>
+          <p>Para tiendas y boutiques. Precios por volumen, surtido curado y reposición por temporada.</p>
+          <button class="btn-link" data-inquiry="mayoreo">Pedir catálogo mayorista</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="historia" id="historia">
+      <div class="historia-art reveal" aria-hidden="true">
+        <div class="arch arch-small"><div class="weave"></div></div>
+        <div class="stamp"><svg viewBox="0 0 100 100"><defs><path id="circ" d="M50 50 m-38 0 a38 38 0 1 1 76 0 a38 38 0 1 1 -76 0"/></defs><text><textPath href="#circ">HECHO EN COLOMBIA · HECHO EN COLOMBIA · </textPath></text></svg><span>J</span></div>
+      </div>
+      <div class="historia-copy reveal">
+        <p class="eyebrow">Nuestra historia</p>
+        <h2>Hecho a mano,<br><em>con calma.</em></h2>
+        <p>Janda nace del mar colombiano y de las manos que lo visten. Cada pieza se diseña en casa y se confecciona en talleres locales, en tiradas cortas, para que lo que lleves no lo lleve nadie más en la playa.</p>
+        <p>Elegimos telas que aguantan sal, sol y cloro, cortes que abrazan sin apretar, y detalles —un bordado, una argolla, un tejido de iraca— que hacen que una prenda se vuelva tuya.</p>
+        <p class="signature">— Alba, fundadora de Janda</p>
+      </div>
+    </section>
+
+    <section class="club">
+      <div class="club-inner">
+        <p class="eyebrow light">Club Janda</p>
+        <h2>Las nuevas piezas,<br><em>antes que nadie.</em></h2>
+        <p>Lanzamientos, rentas disponibles y ventas privadas. Un correo de vez en cuando, nunca spam.</p>
+        <form class="club-form" id="clubForm" novalidate>
+          <label class="sr" for="clubEmail">Tu correo</label>
+          <input id="clubEmail" name="email" type="email" placeholder="tu@correo.com" required autocomplete="email">
+          <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn-light" type="submit">Unirme</button>
+        </form>
+        <p class="form-msg" id="clubMsg" role="status"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-brand">
+      <span class="wordmark">Janda</span>
+      <p>Clothing &amp; Accessories<br>Hecho en Colombia</p>
+    </div>
+    <div class="footer-cols">
+      <div><h4>Tienda</h4><a href="#coleccion">Colección</a><button data-inquiry="renta">Renta</button><button data-inquiry="mayoreo">Mayoreo</button></div>
+      <div><h4>Ayuda</h4><button data-inquiry="contacto">Escríbenos</button><a data-wa href="#">WhatsApp</a><a data-ig href="https://instagram.com/janda.clothing" target="_blank" rel="noopener">@janda.clothing</a></div>
+    </div>
+    <p class="footer-fine">© <span id="year"></span> Janda Clothing &amp; Accessories</p>
+  </footer>
+
+  <!-- Product quick view -->
+  <dialog class="sheet" id="productSheet" aria-labelledby="psName">
+    <button class="close" data-close aria-label="Cerrar">×</button>
+    <div class="sheet-grid">
+      <div class="sheet-img" id="psImg"></div>
+      <div class="sheet-body">
+        <p class="eyebrow" id="psCat"></p>
+        <h3 id="psName"></h3>
+        <p class="price" id="psPrice"></p>
+        <p class="desc" id="psDesc"></p>
+        <p class="meta" id="psColors"></p>
+        <fieldset class="sizes" id="psSizes"><legend>Talla</legend></fieldset>
+        <div class="sheet-actions" id="psActions"></div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Bag -->
+  <aside class="drawer" id="bag" aria-label="Tu bolsa" hidden>
+    <div class="drawer-scrim" data-close-bag></div>
+    <div class="drawer-panel">
+      <header><h3>Tu bolsa</h3><button class="close" data-close-bag aria-label="Cerrar">×</button></header>
+      <ul class="bag-items" id="bagItems"></ul>
+      <form class="bag-form" id="bagForm" novalidate>
+        <div class="bag-total"><span>Total</span><strong id="bagTotal">$0</strong></div>
+        <label>Nombre<input name="name" required autocomplete="name"></label>
+        <label>WhatsApp<input name="phone" type="tel" required autocomplete="tel" placeholder="+57 300 000 0000"></label>
+        <label class="check"><input type="checkbox" name="consent"> Quiero recibir novedades de Janda</label>
+        <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn btn-dark wide" type="submit">Pedir por WhatsApp</button>
+        <p class="fine">Te confirmamos disponibilidad, envío y pago por WhatsApp.</p>
+        <p class="form-msg" id="bagMsg" role="status"></p>
+      </form>
+    </div>
+  </aside>
+
+  <!-- Inquiry (renta / mayoreo / contacto) -->
+  <dialog class="sheet narrow" id="inquirySheet" aria-labelledby="inqTitle">
+    <button class="close" data-close aria-label="Cerrar">×</button>
+    <form class="inq-form" id="inqForm" novalidate>
+      <p class="eyebrow" id="inqEyebrow"></p>
+      <h3 id="inqTitle"></h3>
+      <input type="hidden" name="type">
+      <label>Nombre<input name="name" required autocomplete="name"></label>
+      <div class="two">
+        <label>WhatsApp<input name="phone" type="tel" autocomplete="tel"></label>
+        <label>Correo<input name="email" type="email" autocomplete="email"></label>
+      </div>
+      <label class="only-renta">Fecha del evento<input name="eventDate" type="date"></label>
+      <label>Mensaje<textarea name="message" rows="4"></textarea></label>
+      <label class="check"><input type="checkbox" name="consent"> Quiero recibir novedades de Janda</label>
+      <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="btn btn-dark wide" type="submit">Enviar</button>
+      <p class="form-msg" id="inqMsg" role="status"></p>
+    </form>
+  </dialog>
+
+  <a class="wa-float" data-wa href="#" aria-label="Escríbenos por WhatsApp" hidden>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
+  </a>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
